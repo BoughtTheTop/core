@@ -1,0 +1,47 @@
+{
+    "types": {
+        "EIP712Domain": [
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "version",
+                "type": "string"
+            },
+            {
+                "name": "chainId",
+                "type": "uint256"
+            },
+            {
+                "name": "verifyingContract",
+                "type": "address"
+            }
+        ],
+        "Mint": [
+            {
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "name": "extra",
+                "type": "uint256"
+            }
+        ]
+    },
+    "primaryType": "Mint",
+    "domain": {
+        "name": "BoughtThe.top NFT",
+        "version": "1",
+        "chainId": 1,
+        "verifyingContract": "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC"
+    },
+    "message": {
+        "to": "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
+        "tokenId": 0
+    }
+}

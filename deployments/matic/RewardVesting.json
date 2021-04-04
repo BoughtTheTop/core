@@ -1,0 +1,955 @@
+{
+  "address": "0x5ABBC8A74F536d0Dba993466E70BA0a14659c3e9",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_rewardToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_caller",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "vestingDurationInDays",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "vestingCliffInDays",
+          "type": "uint16"
+        }
+      ],
+      "name": "GrantAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "amountClaimed",
+          "type": "uint256"
+        }
+      ],
+      "name": "GrantTokensClaimed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "startBlock",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "endBlock",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "eligibleStartBlock",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "eligibleEndBlock",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "vestingDuration",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardParametersChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "vestingDurationInDays",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint16",
+          "name": "vestingCliffInDays",
+          "type": "uint16"
+        }
+      ],
+      "name": "addTokenGrant",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "calculateGrantClaim",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "caller",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "claimVestedTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "claimedBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "getTokenGrant",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "startTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint16",
+              "name": "vestingDuration",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint16",
+              "name": "vestingCliff",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalClaimed",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct RewardVesting.Grant",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "minter",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "extra",
+          "type": "uint256"
+        }
+      ],
+      "name": "onMint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "rescue",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardEarnEndBlock",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardEarnStartBlock",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardEligibleEndBlock",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardEligibleStartBlock",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardToken",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardVestingDuration",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "startBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "endBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "eligibleStartBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "eligibleEndBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "vestingDuration",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "setRewardParameters",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "tokenGrants",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "vestingDuration",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint16",
+          "name": "vestingCliff",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalClaimed",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "tokensVestedPerDay",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "vestedBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x4d473294316c0bfd747fdb5b27984a5ccb0f24f224f0a6c943c916a7563211a2",
+  "receipt": {
+    "to": null,
+    "from": "0x761496379064d3D49Da3b623017CB00421cc8980",
+    "contractAddress": "0x5ABBC8A74F536d0Dba993466E70BA0a14659c3e9",
+    "transactionIndex": 0,
+    "gasUsed": "1607339",
+    "logsBloom": "0x00000000000000000000000000000010000000000000020000800000000000000000000000000000080000000000000000008000000000000000000000200000000020000000000000000000000000800001000000000000000100000000400000000080820000000000000000200800000000000000000080000000000100400000000000000000000000000000000000000000000000000000000000000000220000000000000400000000000000020000000000020000000000000000004000000000004000000101000000000000000000000000000000100000000020000010000000010000000000000000000000000000000000000000000000100000",
+    "blockHash": "0xf907b1f736f25e72cf9eab8f89ed55d9a9a280148413ce35123cd4c385a1c1cf",
+    "transactionHash": "0x4d473294316c0bfd747fdb5b27984a5ccb0f24f224f0a6c943c916a7563211a2",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 12800833,
+        "transactionHash": "0x4d473294316c0bfd747fdb5b27984a5ccb0f24f224f0a6c943c916a7563211a2",
+        "address": "0x5ABBC8A74F536d0Dba993466E70BA0a14659c3e9",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000761496379064d3d49da3b623017cb00421cc8980"
+        ],
+        "data": "0x",
+        "logIndex": 0,
+        "blockHash": "0xf907b1f736f25e72cf9eab8f89ed55d9a9a280148413ce35123cd4c385a1c1cf"
+      },
+      {
+        "transactionIndex": 0,
+        "blockNumber": 12800833,
+        "transactionHash": "0x4d473294316c0bfd747fdb5b27984a5ccb0f24f224f0a6c943c916a7563211a2",
+        "address": "0x04AE4aE7F9af802DE5A2Da9561948F6f24D4b043",
+        "topics": [
+          "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
+          "0x0000000000000000000000005abbc8a74f536d0dba993466e70ba0a14659c3e9",
+          "0x000000000000000000000000761496379064d3d49da3b623017cb00421cc8980"
+        ],
+        "data": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "logIndex": 1,
+        "blockHash": "0xf907b1f736f25e72cf9eab8f89ed55d9a9a280148413ce35123cd4c385a1c1cf"
+      },
+      {
+        "transactionIndex": 0,
+        "blockNumber": 12800833,
+        "transactionHash": "0x4d473294316c0bfd747fdb5b27984a5ccb0f24f224f0a6c943c916a7563211a2",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x000000000000000000000000761496379064d3d49da3b623017cb00421cc8980",
+          "0x0000000000000000000000001ca971963bdb4ba2bf337c90660674acff5beb3f"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000005b5ddc620ee0000000000000000000000000000000000000000000000011e7544429da949152300000000000000000000000000000000000000000000002ecc0140f22e5b083100000000000000000000000000000000000000000000011e753e8cbfe328272300000000000000000000000000000000000000000000002ecc06f6cff47bf631",
+        "logIndex": 2,
+        "blockHash": "0xf907b1f736f25e72cf9eab8f89ed55d9a9a280148413ce35123cd4c385a1c1cf"
+      }
+    ],
+    "blockNumber": 12800833,
+    "cumulativeGasUsed": "1607339",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x04AE4aE7F9af802DE5A2Da9561948F6f24D4b043",
+    "0x386d661252e4bebab2fD9683538905e4eB0cd0DE"
+  ],
+  "solcInputHash": "26f6a656a41aefddab40d92ccdd59abd",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.1+commit.df193b15\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_rewardToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_caller\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"vestingDurationInDays\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"vestingCliffInDays\",\"type\":\"uint16\"}],\"name\":\"GrantAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"amountClaimed\",\"type\":\"uint256\"}],\"name\":\"GrantTokensClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"startBlock\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"endBlock\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"eligibleStartBlock\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"eligibleEndBlock\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"vestingDuration\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RewardParametersChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"vestingDurationInDays\",\"type\":\"uint16\"},{\"internalType\":\"uint16\",\"name\":\"vestingCliffInDays\",\"type\":\"uint16\"}],\"name\":\"addTokenGrant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"calculateGrantClaim\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"caller\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"claimVestedTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"claimedBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"getTokenGrant\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"vestingDuration\",\"type\":\"uint16\"},{\"internalType\":\"uint16\",\"name\":\"vestingCliff\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"totalClaimed\",\"type\":\"uint256\"}],\"internalType\":\"struct RewardVesting.Grant\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"minter\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"extra\",\"type\":\"uint256\"}],\"name\":\"onMint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"rescue\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardEarnEndBlock\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardEarnStartBlock\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardEligibleEndBlock\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardEligibleStartBlock\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardToken\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardVestingDuration\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"startBlock\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endBlock\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"eligibleStartBlock\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"eligibleEndBlock\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"vestingDuration\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"setRewardParameters\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"tokenGrants\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"vestingDuration\",\"type\":\"uint16\"},{\"internalType\":\"uint16\",\"name\":\"vestingCliff\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"totalClaimed\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"tokensVestedPerDay\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"vestedBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The vesting contract for the initial mint rewards\",\"kind\":\"dev\",\"methods\":{\"addTokenGrant(address,uint256,uint256,uint16,uint16)\":{\"params\":{\"amount\":\"The amount of tokens being granted\",\"recipient\":\"The address that is receiving the grant\",\"startTime\":\"The unix timestamp when the grant will start\",\"vestingCliffInDays\":\"The vesting cliff duration in days\",\"vestingDurationInDays\":\"The vesting period in days\"}},\"calculateGrantClaim(address)\":{\"details\":\"Due to rounding errors once grant duration is reached, returns the entire left grant amountReturns 0 if cliff has not been reached\",\"params\":{\"recipient\":\"The address that has a grant\"},\"returns\":{\"_0\":\"The amount recipient can claim\"}},\"claimVestedTokens(address)\":{\"details\":\"Errors if no tokens have vestedIt is advised recipients check they are entitled to claim via `calculateGrantClaim` before calling this\",\"params\":{\"recipient\":\"The address that has a grant\"}},\"claimedBalance(address)\":{\"params\":{\"recipient\":\"The address that has a grant\"},\"returns\":{\"_0\":\"the number of claimed tokens by `recipient`\"}},\"constructor\":{\"params\":{\"_caller\":\"Address of an additional allowed caller of addTokenGrant\",\"_rewardToken\":\"Address of reward token\"}},\"getTokenGrant(address)\":{\"params\":{\"recipient\":\"The address that has a grant\"},\"returns\":{\"_0\":\"the grant\"}},\"onMint(address,address,uint256,uint256)\":{\"details\":\"Check if a reward has been earned and if so start vesting Requirements: - the caller must be {caller}\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"rescue(address)\":{\"details\":\"Rescue any ERC-20 token the contract may hold\",\"params\":{\"_token\":\"ERC-20 token address Requirements: - the caller must be owner\"}},\"setRewardParameters(uint256,uint256,uint256,uint256,uint16,uint256)\":{\"details\":\"Sets current reward parameters Requirements: - the caller must be owner\"},\"tokensVestedPerDay(address)\":{\"params\":{\"recipient\":\"The address that has a grant\"},\"returns\":{\"_0\":\"Number of tokens that will vest per day\"}},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"vestedBalance(address)\":{\"details\":\"Returns 0 if cliff has not been reached\",\"params\":{\"recipient\":\"The address that has a grant\"},\"returns\":{\"_0\":\"Total vested balance (claimed + unclaimed)\"}}},\"stateVariables\":{\"SECONDS_PER_DAY\":{\"details\":\"Used to translate vesting periods specified in days to seconds\"}},\"title\":\"RewardVesting\",\"version\":1},\"userdoc\":{\"events\":{\"GrantAdded(address,uint256,uint256,uint16,uint16)\":{\"notice\":\"Event emitted when a new grant is created\"},\"GrantTokensClaimed(address,uint256)\":{\"notice\":\"Event emitted when tokens are claimed by a recipient from a grant\"},\"RewardParametersChanged(uint256,uint256,uint256,uint256,uint16,uint256)\":{\"notice\":\"Emitted when reward parameters ({rewardEarnStartBlock}, rewardEarnEndBlock}, {rewardEligibleStartBlock}, {rewardEligibleEndBlock}, {rewardVestingDuration}, {rewardAmount}) are changed\"}},\"kind\":\"user\",\"methods\":{\"addTokenGrant(address,uint256,uint256,uint16,uint16)\":{\"notice\":\"Add a new token grant\"},\"calculateGrantClaim(address)\":{\"notice\":\"Calculate the vested and unclaimed tokens available for `recipient` to claim\"},\"caller()\":{\"notice\":\"Caller address that is allowed to add grants (in addition to owner)\"},\"claimVestedTokens(address)\":{\"notice\":\"Allows a grant recipient to claim their vested tokens\"},\"claimedBalance(address)\":{\"notice\":\"The balance claimed by `recipient`\"},\"constructor\":{\"notice\":\"Construct a new Vesting contract\"},\"getTokenGrant(address)\":{\"notice\":\"Get token grant for recipient\"},\"rewardAmount()\":{\"notice\":\"Total rewards per mint\"},\"rewardEarnEndBlock()\":{\"notice\":\"End block of rewards\"},\"rewardEarnStartBlock()\":{\"notice\":\"Start block of rewards\"},\"rewardEligibleEndBlock()\":{\"notice\":\"End block of NFTs eligibile for rewards\"},\"rewardEligibleStartBlock()\":{\"notice\":\"Start block of NFTs eligible for rewards\"},\"rewardToken()\":{\"notice\":\"Address of reward token\"},\"rewardVestingDuration()\":{\"notice\":\"Reward vesting duration in days\"},\"tokenGrants(address)\":{\"notice\":\"Mapping of address to grants\"},\"tokensVestedPerDay(address)\":{\"notice\":\"Calculate the number of tokens that will vest per day for the given recipient\"},\"vestedBalance(address)\":{\"notice\":\"Calculate the vested (claimed + unclaimed) tokens for `recipient`\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/RewardVesting.sol\":\"RewardVesting\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":9999},\"remappings\":[]},\"sources\":{\"contracts/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\n/**\\r\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\r\\n */\\r\\ninterface IERC20 {\\r\\n    /**\\r\\n     * @dev Returns the amount of tokens in existence.\\r\\n     */\\r\\n    function totalSupply() external view returns (uint256);\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the amount of tokens owned by `account`.\\r\\n     */\\r\\n    function balanceOf(address account) external view returns (uint256);\\r\\n\\r\\n    /**\\r\\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\\r\\n     *\\r\\n     * Returns a boolean value indicating whether the operation succeeded.\\r\\n     *\\r\\n     * Emits a {Transfer} event.\\r\\n     */\\r\\n    function transfer(address recipient, uint256 amount) external returns (bool);\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the remaining number of tokens that `spender` will be\\r\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\r\\n     * zero by default.\\r\\n     *\\r\\n     * This value changes when {approve} or {transferFrom} are called.\\r\\n     */\\r\\n    function allowance(address owner, address spender) external view returns (uint256);\\r\\n\\r\\n    /**\\r\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\r\\n     *\\r\\n     * Returns a boolean value indicating whether the operation succeeded.\\r\\n     *\\r\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\r\\n     * that someone may use both the old and the new allowance by unfortunate\\r\\n     * transaction ordering. One possible solution to mitigate this race\\r\\n     * condition is to first reduce the spender's allowance to 0 and set the\\r\\n     * desired value afterwards:\\r\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\r\\n     *\\r\\n     * Emits an {Approval} event.\\r\\n     */\\r\\n    function approve(address spender, uint256 amount) external returns (bool);\\r\\n\\r\\n    /**\\r\\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\\r\\n     * allowance mechanism. `amount` is then deducted from the caller's\\r\\n     * allowance.\\r\\n     *\\r\\n     * Returns a boolean value indicating whether the operation succeeded.\\r\\n     *\\r\\n     * Emits a {Transfer} event.\\r\\n     */\\r\\n    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);\\r\\n\\r\\n    /**\\r\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\r\\n     * another (`to`).\\r\\n     *\\r\\n     * Note that `value` may be zero.\\r\\n     */\\r\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\r\\n\\r\\n    /**\\r\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\r\\n     * a call to {approve}. `value` is the new allowance.\\r\\n     */\\r\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\r\\n}\\r\\n\",\"keccak256\":\"0x208a653b3c4850786f94a1fa164579a3620a56097b138f02c3eccb393c214e13\",\"license\":\"MIT\"},\"contracts/IOnMint.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\ninterface IOnMint {\\r\\n    function onMint(address minter, address to, uint256 tokenId, uint256 extra) external;\\r\\n}\",\"keccak256\":\"0x0387291961e0e6f0f312ce78548062da5c2a054b414cba3aab5e2fe696cea305\",\"license\":\"MIT\"},\"contracts/RewardVesting.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\nimport \\\"./ERC20/IERC20.sol\\\";\\r\\nimport \\\"./access/Ownable.sol\\\";\\r\\nimport \\\"./utils/math/SafeMath.sol\\\";\\r\\nimport \\\"./utils/math/Math.sol\\\";\\r\\nimport \\\"./IOnMint.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title RewardVesting\\r\\n * @dev The vesting contract for the initial mint rewards\\r\\n */\\r\\ncontract RewardVesting is Ownable, IOnMint {\\r\\n    using SafeMath for uint256;\\r\\n    /// @notice Start block of rewards\\r\\n    uint256 public rewardEarnStartBlock;\\r\\n\\r\\n    /// @notice End block of rewards\\r\\n    uint256 public rewardEarnEndBlock;\\r\\n\\r\\n    /// @notice Reward vesting duration in days\\r\\n    uint16 public rewardVestingDuration;\\r\\n\\r\\n    /// @notice Start block of NFTs eligible for rewards\\r\\n    uint256 public rewardEligibleStartBlock;\\r\\n\\r\\n    /// @notice End block of NFTs eligibile for rewards\\r\\n    uint256 public rewardEligibleEndBlock;\\r\\n\\r\\n    /// @notice Total rewards per mint\\r\\n    uint256 public rewardAmount;\\r\\n\\r\\n    /// @notice Address of reward token\\r\\n    IERC20 public rewardToken;\\r\\n\\r\\n    /// @notice Grant definition\\r\\n    struct Grant {\\r\\n        uint256 startTime;\\r\\n        uint256 amount;\\r\\n        uint16 vestingDuration;\\r\\n        uint16 vestingCliff;\\r\\n        uint256 totalClaimed;\\r\\n    }\\r\\n\\r\\n    /// @notice Mapping of address to grants\\r\\n    mapping (address => Grant) public tokenGrants;\\r\\n\\r\\n    /// @notice Caller address that is allowed to add grants (in addition to owner)\\r\\n    address public caller;\\r\\n\\r\\n    /// @dev Used to translate vesting periods specified in days to seconds\\r\\n    uint256 constant internal SECONDS_PER_DAY = 86400;\\r\\n\\r\\n    /**\\r\\n     * @notice Construct a new Vesting contract\\r\\n     * @param _rewardToken Address of reward token\\r\\n     * @param _caller Address of an additional allowed caller of addTokenGrant\\r\\n     */\\r\\n    constructor(address _rewardToken, address _caller) {\\r\\n        require(_rewardToken != address(0), \\\"RewardVesting::constructor: must be valid token address\\\");\\r\\n        require(_caller != address(0), \\\"RewardVesting::constructor: must be valid address\\\");\\r\\n        rewardToken = IERC20(_rewardToken);\\r\\n        caller = _caller;\\r\\n        rewardToken.approve(owner(), type(uint256).max);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Emitted when reward parameters ({rewardEarnStartBlock}, rewardEarnEndBlock}, {rewardEligibleStartBlock},\\r\\n     * {rewardEligibleEndBlock}, {rewardVestingDuration}, {rewardAmount}) are changed\\r\\n     */\\r\\n    event RewardParametersChanged(uint256 startBlock, uint256 endBlock, uint256 eligibleStartBlock,\\r\\n        uint256 eligibleEndBlock, uint16 vestingDuration, uint256 amount);\\r\\n\\r\\n    /// @notice Event emitted when a new grant is created\\r\\n    event GrantAdded(address indexed recipient, uint256 indexed amount, uint256 startTime, uint16 vestingDurationInDays, uint16 vestingCliffInDays);\\r\\n    \\r\\n    /// @notice Event emitted when tokens are claimed by a recipient from a grant\\r\\n    event GrantTokensClaimed(address indexed recipient, uint256 indexed amountClaimed);\\r\\n\\r\\n    /**\\r\\n     * @dev Sets current reward parameters\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - the caller must be owner\\r\\n     */\\r\\n    function setRewardParameters(uint256 startBlock, uint256 endBlock, uint256 eligibleStartBlock,\\r\\n        uint256 eligibleEndBlock, uint16 vestingDuration, uint256 amount) public onlyOwner {\\r\\n\\r\\n        require(endBlock >= startBlock, \\\"RewardVesting: startBlock less than endBlock\\\");\\r\\n        require(eligibleEndBlock >= eligibleStartBlock, \\\"RewardVesting: eligibleEndBlock less than eligibleStartBlock\\\");\\r\\n        require(vestingDuration > 0, \\\"RewardVesting: duration must be > 0\\\");\\r\\n        require(vestingDuration <= 25*365, \\\"RewardVesting: duration more than 25 years\\\");\\r\\n\\r\\n        rewardEarnStartBlock = startBlock;\\r\\n        rewardEarnEndBlock = endBlock;\\r\\n        rewardEligibleStartBlock = eligibleStartBlock;\\r\\n        rewardEligibleEndBlock = eligibleEndBlock;\\r\\n        rewardVestingDuration = vestingDuration;\\r\\n        rewardAmount = amount;\\r\\n\\r\\n        emit RewardParametersChanged(startBlock, endBlock, eligibleStartBlock, eligibleEndBlock,\\r\\n            vestingDuration, amount);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Rescue any ERC-20 token the contract may hold\\r\\n     *\\r\\n     * @param _token ERC-20 token address\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - the caller must be owner\\r\\n     */\\r\\n    function rescue(address _token) public onlyOwner {\\r\\n        IERC20 token = IERC20(_token);\\r\\n        token.transfer(msg.sender, token.balanceOf(address(this)));\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Add a new token grant\\r\\n     * @param recipient The address that is receiving the grant\\r\\n     * @param startTime The unix timestamp when the grant will start\\r\\n     * @param amount The amount of tokens being granted\\r\\n     * @param vestingDurationInDays The vesting period in days\\r\\n     * @param vestingCliffInDays The vesting cliff duration in days\\r\\n     */\\r\\n    function addTokenGrant(\\r\\n        address recipient,\\r\\n        uint256 startTime,\\r\\n        uint256 amount,\\r\\n        uint16 vestingDurationInDays,\\r\\n        uint16 vestingCliffInDays\\r\\n    ) \\r\\n        public\\r\\n    {\\r\\n        require(msg.sender == owner() || msg.sender == caller, \\\"RewardVesting::addTokenGrant: not owner or caller\\\");\\r\\n        require(vestingCliffInDays <= 10*365, \\\"RewardVesting::addTokenGrant: cliff more than 10 years\\\");\\r\\n        require(vestingDurationInDays > 0, \\\"RewardVesting::addTokenGrant: duration must be > 0\\\");\\r\\n        require(vestingDurationInDays <= 25*365, \\\"RewardVesting::addTokenGrant: duration more than 25 years\\\");\\r\\n        require(vestingDurationInDays >= vestingCliffInDays, \\\"RewardVesting::addTokenGrant: duration < cliff\\\");\\r\\n        require(tokenGrants[recipient].amount == 0, \\\"RewardVesting::addTokenGrant: grant already exists for account\\\");\\r\\n        \\r\\n        uint256 amountVestedPerDay = amount.div(vestingDurationInDays);\\r\\n        require(amountVestedPerDay > 0, \\\"RewardVesting::addTokenGrant: amountVestedPerDay > 0\\\");\\r\\n\\r\\n        uint256 grantStartTime = startTime == 0 ? block.timestamp : startTime;\\r\\n\\r\\n        Grant memory grant = Grant({\\r\\n            startTime: grantStartTime,\\r\\n            amount: amount,\\r\\n            vestingDuration: vestingDurationInDays,\\r\\n            vestingCliff: vestingCliffInDays,\\r\\n            totalClaimed: 0\\r\\n        });\\r\\n        tokenGrants[recipient] = grant;\\r\\n        emit GrantAdded(recipient, amount, grantStartTime, vestingDurationInDays, vestingCliffInDays);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Get token grant for recipient\\r\\n     * @param recipient The address that has a grant\\r\\n     * @return the grant\\r\\n     */\\r\\n    function getTokenGrant(address recipient) public view returns(Grant memory){\\r\\n        return tokenGrants[recipient];\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Calculate the vested and unclaimed tokens available for `recipient` to claim\\r\\n     * @dev Due to rounding errors once grant duration is reached, returns the entire left grant amount\\r\\n     * @dev Returns 0 if cliff has not been reached\\r\\n     * @param recipient The address that has a grant\\r\\n     * @return The amount recipient can claim\\r\\n     */\\r\\n    function calculateGrantClaim(address recipient) public view returns (uint256) {\\r\\n        Grant storage tokenGrant = tokenGrants[recipient];\\r\\n\\r\\n        // For grants created with a future start date, that hasn't been reached, return 0, 0\\r\\n        if (block.timestamp < tokenGrant.startTime) {\\r\\n            return 0;\\r\\n        }\\r\\n\\r\\n        // Check cliff was reached\\r\\n        uint256 elapsedTime = block.timestamp.sub(tokenGrant.startTime);\\r\\n        uint256 elapsedDays = elapsedTime.div(SECONDS_PER_DAY);\\r\\n        \\r\\n        if (elapsedDays < tokenGrant.vestingCliff) {\\r\\n            return 0;\\r\\n        }\\r\\n\\r\\n        // If over vesting duration, all tokens vested\\r\\n        if (elapsedDays >= tokenGrant.vestingDuration) {\\r\\n            uint256 remainingGrant = tokenGrant.amount.sub(tokenGrant.totalClaimed);\\r\\n            return remainingGrant;\\r\\n        } else {\\r\\n            uint256 vestingDurationInSecs = uint256(tokenGrant.vestingDuration).mul(SECONDS_PER_DAY);\\r\\n            uint256 vestingAmountPerSec = tokenGrant.amount.div(vestingDurationInSecs);\\r\\n            uint256 amountVested = vestingAmountPerSec.mul(elapsedTime);\\r\\n            uint256 claimableAmount = amountVested.sub(tokenGrant.totalClaimed);\\r\\n            return claimableAmount;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Calculate the vested (claimed + unclaimed) tokens for `recipient`\\r\\n     * @dev Returns 0 if cliff has not been reached\\r\\n     * @param recipient The address that has a grant\\r\\n     * @return Total vested balance (claimed + unclaimed)\\r\\n     */\\r\\n    function vestedBalance(address recipient) external view returns (uint256) {\\r\\n        Grant storage tokenGrant = tokenGrants[recipient];\\r\\n\\r\\n        // For grants created with a future start date, that hasn't been reached, return 0, 0\\r\\n        if (block.timestamp < tokenGrant.startTime) {\\r\\n            return 0;\\r\\n        }\\r\\n\\r\\n        // Check cliff was reached\\r\\n        uint256 elapsedTime = block.timestamp.sub(tokenGrant.startTime);\\r\\n        uint256 elapsedDays = elapsedTime.div(SECONDS_PER_DAY);\\r\\n        \\r\\n        if (elapsedDays < tokenGrant.vestingCliff) {\\r\\n            return 0;\\r\\n        }\\r\\n\\r\\n        // If over vesting duration, all tokens vested\\r\\n        if (elapsedDays >= tokenGrant.vestingDuration) {\\r\\n            return tokenGrant.amount;\\r\\n        } else {\\r\\n            uint256 vestingDurationInSecs = uint256(tokenGrant.vestingDuration).mul(SECONDS_PER_DAY);\\r\\n            uint256 vestingAmountPerSec = tokenGrant.amount.div(vestingDurationInSecs);\\r\\n            uint256 amountVested = vestingAmountPerSec.mul(elapsedTime);\\r\\n            return amountVested;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice The balance claimed by `recipient`\\r\\n     * @param recipient The address that has a grant\\r\\n     * @return the number of claimed tokens by `recipient`\\r\\n     */\\r\\n    function claimedBalance(address recipient) external view returns (uint256) {\\r\\n        Grant storage tokenGrant = tokenGrants[recipient];\\r\\n        return tokenGrant.totalClaimed;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Allows a grant recipient to claim their vested tokens\\r\\n     * @dev Errors if no tokens have vested\\r\\n     * @dev It is advised recipients check they are entitled to claim via `calculateGrantClaim` before calling this\\r\\n     * @param recipient The address that has a grant\\r\\n     */\\r\\n    function claimVestedTokens(address recipient) external {\\r\\n        uint256 amountVested = calculateGrantClaim(recipient);\\r\\n        require(amountVested > 0, \\\"RewardVesting::claimVested: amountVested is 0\\\");\\r\\n\\r\\n        Grant storage tokenGrant = tokenGrants[recipient];\\r\\n        tokenGrant.totalClaimed = uint256(tokenGrant.totalClaimed.add(amountVested));\\r\\n        \\r\\n        require(rewardToken.transfer(recipient, amountVested), \\\"RewardVesting::claimVested: transfer failed\\\");\\r\\n        emit GrantTokensClaimed(recipient, amountVested);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Calculate the number of tokens that will vest per day for the given recipient\\r\\n     * @param recipient The address that has a grant\\r\\n     * @return Number of tokens that will vest per day\\r\\n     */\\r\\n    function tokensVestedPerDay(address recipient) public view returns(uint256) {\\r\\n        Grant storage tokenGrant = tokenGrants[recipient];\\r\\n        return tokenGrant.amount.div(uint256(tokenGrant.vestingDuration));\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Check if a reward has been earned and if so start vesting\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - the caller must be {caller}\\r\\n     */\\r\\n    function onMint(address minter, address to, uint256, uint256 extra) public override {\\r\\n        require(msg.sender == caller, \\\"RewardVesting::onMint: not caller\\\");\\r\\n        \\r\\n        if (minter == to && block.number >= rewardEarnStartBlock && block.number <= rewardEarnEndBlock &&\\r\\n            extra >= rewardEligibleStartBlock && extra <= rewardEligibleEndBlock) {\\r\\n            \\r\\n            if (tokenGrants[to].amount == 0)\\r\\n                addTokenGrant(to, 0, rewardAmount, rewardVestingDuration, 0);\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x8e68187c21acc80027587dde2e8913ba3b00b6d9dfd3377f6b3e82bee7858a49\",\"license\":\"MIT\"},\"contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\nimport \\\"../utils/Context.sol\\\";\\r\\n/**\\r\\n * @dev Contract module which provides a basic access control mechanism, where\\r\\n * there is an account (an owner) that can be granted exclusive access to\\r\\n * specific functions.\\r\\n *\\r\\n * By default, the owner account will be the one that deploys the contract. This\\r\\n * can later be changed with {transferOwnership}.\\r\\n *\\r\\n * This module is used through inheritance. It will make available the modifier\\r\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\r\\n * the owner.\\r\\n */\\r\\nabstract contract Ownable is Context {\\r\\n    address private _owner;\\r\\n\\r\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\r\\n\\r\\n    /**\\r\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\r\\n     */\\r\\n    constructor () {\\r\\n        address msgSender = _msgSender();\\r\\n        _owner = msgSender;\\r\\n        emit OwnershipTransferred(address(0), msgSender);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the address of the current owner.\\r\\n     */\\r\\n    function owner() public view virtual returns (address) {\\r\\n        return _owner;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Throws if called by any account other than the owner.\\r\\n     */\\r\\n    modifier onlyOwner() {\\r\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Leaves the contract without owner. It will not be possible to call\\r\\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\\r\\n     *\\r\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\r\\n     * thereby removing any functionality that is only available to the owner.\\r\\n     */\\r\\n    function renounceOwnership() public virtual onlyOwner {\\r\\n        emit OwnershipTransferred(_owner, address(0));\\r\\n        _owner = address(0);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\r\\n     * Can only be called by the current owner.\\r\\n     */\\r\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\r\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\r\\n        emit OwnershipTransferred(_owner, newOwner);\\r\\n        _owner = newOwner;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xff947df457c211856a24ba4496e247e5320a22f4440c7c17c0a69370334bfd8f\",\"license\":\"MIT\"},\"contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\n/*\\r\\n * @dev Provides information about the current execution context, including the\\r\\n * sender of the transaction and its data. While these are generally available\\r\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\r\\n * manner, since when dealing with meta-transactions the account sending and\\r\\n * paying for execution may not be the actual sender (as far as an application\\r\\n * is concerned).\\r\\n *\\r\\n * This contract is only required for intermediate, library-like contracts.\\r\\n */\\r\\nabstract contract Context {\\r\\n    function _msgSender() internal view virtual returns (address) {\\r\\n        return msg.sender;\\r\\n    }\\r\\n\\r\\n    function _msgData() internal view virtual returns (bytes calldata) {\\r\\n        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691\\r\\n        return msg.data;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xd66de64ebb51d57721ac10bb1571dc8b2798cd48723b8222341bc0e65372e050\",\"license\":\"MIT\"},\"contracts/utils/math/Math.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\n/**\\r\\n * @dev Standard math utilities missing in the Solidity language.\\r\\n */\\r\\nlibrary Math {\\r\\n    /**\\r\\n     * @dev Returns the largest of two numbers.\\r\\n     */\\r\\n    function max(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        return a >= b ? a : b;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the smallest of two numbers.\\r\\n     */\\r\\n    function min(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        return a < b ? a : b;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the average of two numbers. The result is rounded towards\\r\\n     * zero.\\r\\n     */\\r\\n    function average(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        // (a + b) / 2 can overflow, so we distribute\\r\\n        return (a / 2) + (b / 2) + ((a % 2 + b % 2) / 2);\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xf1848de74e270d74781176ea7a43739e403d69483fb72a2eb062838bbbd741dc\",\"license\":\"MIT\"},\"contracts/utils/math/SafeMath.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\n// CAUTION\\r\\n// This version of SafeMath should only be used with Solidity 0.8 or later,\\r\\n// because it relies on the compiler's built in overflow checks.\\r\\n\\r\\n/**\\r\\n * @dev Wrappers over Solidity's arithmetic operations.\\r\\n *\\r\\n * NOTE: `SafeMath` is no longer needed starting with Solidity 0.8. The compiler\\r\\n * now has built in overflow checking.\\r\\n */\\r\\nlibrary SafeMath {\\r\\n    /**\\r\\n     * @dev Returns the addition of two unsigned integers, with an overflow flag.\\r\\n     *\\r\\n     * _Available since v3.4._\\r\\n     */\\r\\n    function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\r\\n        unchecked {\\r\\n            uint256 c = a + b;\\r\\n            if (c < a) return (false, 0);\\r\\n            return (true, c);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the substraction of two unsigned integers, with an overflow flag.\\r\\n     *\\r\\n     * _Available since v3.4._\\r\\n     */\\r\\n    function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\r\\n        unchecked {\\r\\n            if (b > a) return (false, 0);\\r\\n            return (true, a - b);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the multiplication of two unsigned integers, with an overflow flag.\\r\\n     *\\r\\n     * _Available since v3.4._\\r\\n     */\\r\\n    function tryMul(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\r\\n        unchecked {\\r\\n            // Gas optimization: this is cheaper than requiring 'a' not being zero, but the\\r\\n            // benefit is lost if 'b' is also tested.\\r\\n            // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522\\r\\n            if (a == 0) return (true, 0);\\r\\n            uint256 c = a * b;\\r\\n            if (c / a != b) return (false, 0);\\r\\n            return (true, c);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the division of two unsigned integers, with a division by zero flag.\\r\\n     *\\r\\n     * _Available since v3.4._\\r\\n     */\\r\\n    function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\r\\n        unchecked {\\r\\n            if (b == 0) return (false, 0);\\r\\n            return (true, a / b);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the remainder of dividing two unsigned integers, with a division by zero flag.\\r\\n     *\\r\\n     * _Available since v3.4._\\r\\n     */\\r\\n    function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\r\\n        unchecked {\\r\\n            if (b == 0) return (false, 0);\\r\\n            return (true, a % b);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the addition of two unsigned integers, reverting on\\r\\n     * overflow.\\r\\n     *\\r\\n     * Counterpart to Solidity's `+` operator.\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - Addition cannot overflow.\\r\\n     */\\r\\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        return a + b;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the subtraction of two unsigned integers, reverting on\\r\\n     * overflow (when the result is negative).\\r\\n     *\\r\\n     * Counterpart to Solidity's `-` operator.\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - Subtraction cannot overflow.\\r\\n     */\\r\\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        return a - b;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the multiplication of two unsigned integers, reverting on\\r\\n     * overflow.\\r\\n     *\\r\\n     * Counterpart to Solidity's `*` operator.\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - Multiplication cannot overflow.\\r\\n     */\\r\\n    function mul(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        return a * b;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the integer division of two unsigned integers, reverting on\\r\\n     * division by zero. The result is rounded towards zero.\\r\\n     *\\r\\n     * Counterpart to Solidity's `/` operator.\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - The divisor cannot be zero.\\r\\n     */\\r\\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        return a / b;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\\r\\n     * reverting when dividing by zero.\\r\\n     *\\r\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\r\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\r\\n     * invalid opcode to revert (consuming all remaining gas).\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - The divisor cannot be zero.\\r\\n     */\\r\\n    function mod(uint256 a, uint256 b) internal pure returns (uint256) {\\r\\n        return a % b;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the subtraction of two unsigned integers, reverting with custom message on\\r\\n     * overflow (when the result is negative).\\r\\n     *\\r\\n     * CAUTION: This function is deprecated because it requires allocating memory for the error\\r\\n     * message unnecessarily. For custom revert reasons use {trySub}.\\r\\n     *\\r\\n     * Counterpart to Solidity's `-` operator.\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - Subtraction cannot overflow.\\r\\n     */\\r\\n    function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\\r\\n        unchecked {\\r\\n            require(b <= a, errorMessage);\\r\\n            return a - b;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the integer division of two unsigned integers, reverting with custom message on\\r\\n     * division by zero. The result is rounded towards zero.\\r\\n     *\\r\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\r\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\r\\n     * invalid opcode to revert (consuming all remaining gas).\\r\\n     *\\r\\n     * Counterpart to Solidity's `/` operator. Note: this function uses a\\r\\n     * `revert` opcode (which leaves remaining gas untouched) while Solidity\\r\\n     * uses an invalid opcode to revert (consuming all remaining gas).\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - The divisor cannot be zero.\\r\\n     */\\r\\n    function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\\r\\n        unchecked {\\r\\n            require(b > 0, errorMessage);\\r\\n            return a / b;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\\r\\n     * reverting with custom message when dividing by zero.\\r\\n     *\\r\\n     * CAUTION: This function is deprecated because it requires allocating memory for the error\\r\\n     * message unnecessarily. For custom revert reasons use {tryMod}.\\r\\n     *\\r\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\r\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\r\\n     * invalid opcode to revert (consuming all remaining gas).\\r\\n     *\\r\\n     * Requirements:\\r\\n     *\\r\\n     * - The divisor cannot be zero.\\r\\n     */\\r\\n    function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\\r\\n        unchecked {\\r\\n            require(b > 0, errorMessage);\\r\\n            return a % b;\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xc27c53ee27aba4777c424234773faa8e2ca7a7755e5e3b4e0fe329858c988412\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b5060405162001d6438038062001d648339810160408190526200003491620001d6565b600062000040620001a6565b600080546001600160a01b0319166001600160a01b0383169081178255604051929350917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a3506001600160a01b038216620000bc5760405162461bcd60e51b8152600401620000b3906200024f565b60405180910390fd5b6001600160a01b038116620000e55760405162461bcd60e51b8152600401620000b3906200029b565b600780546001600160a01b038085166001600160a01b03199283161792839055600980548583169316929092179091551663095ea7b362000125620001aa565b6000196040518363ffffffff1660e01b81526004016200014792919062000236565b602060405180830381600087803b1580156200016257600080fd5b505af115801562000177573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200019d91906200020d565b505050620002db565b3390565b6000546001600160a01b031690565b80516001600160a01b0381168114620001d157600080fd5b919050565b60008060408385031215620001e9578182fd5b620001f483620001b9565b91506200020460208401620001b9565b90509250929050565b6000602082840312156200021f578081fd5b815180151581146200022f578182fd5b9392505050565b6001600160a01b03929092168252602082015260400190565b602080825260379082015260008051602062001d4483398151915260408201527f2062652076616c696420746f6b656e2061646472657373000000000000000000606082015260800190565b602080825260319082015260008051602062001d448339815191526040820152702062652076616c6964206164647265737360781b606082015260800190565b611a5980620002eb6000396000f3fe608060405234801561001057600080fd5b50600436106101825760003560e01c80639886c2a5116100d8578063f2fde38b1161008c578063fb0ec86c11610066578063fb0ec86c146102dd578063fc9c8d39146102f0578063fd75b8d4146102f857610182565b8063f2fde38b146102ba578063f7b2a7be146102cd578063f7c618c1146102d557610182565b8063b81a4d8f116100bd578063b81a4d8f14610279578063de05de981461029d578063ee0ea6ba146102b257610182565b80639886c2a51461025357806398f3b12d1461026657610182565b80636087349c1161013a578063839006f211610114578063839006f2146102185780638da5cb5b1461022b5780639114557e1461024057610182565b80636087349c146101f557806368fe092f14610208578063715018a61461021057610182565b80633f812ccc1161016b5780633f812ccc146101c55780634a372ad9146101da5780635ca2fc53146101e257610182565b80630c933acc14610187578063376d3b8f146101a5575b600080fd5b61018f61030b565b60405161019c91906118d9565b60405180910390f35b6101b86101b336600461115e565b610311565b60405161019c9190611886565b6101d86101d3366004611178565b61038c565b005b61018f610485565b6101d86101f03660046111b9565b61048b565b61018f61020336600461115e565b610759565b61018f61079c565b6101d86107a2565b6101d861022636600461115e565b61086a565b6102336109e5565b60405161019c9190611297565b61018f61024e36600461115e565b610a01565b61018f61026136600461115e565b610aeb565b6101d861027436600461115e565b610b16565b61028c61028736600461115e565b610c8a565b60405161019c9594939291906118fc565b6102a5610cc0565b60405161019c91906118ca565b61018f610cca565b6101d86102c836600461115e565b610cd0565b61018f610de9565b610233610def565b6101d86102eb366004611247565b610e0b565b610233610f7f565b61018f61030636600461115e565b610f9b565b60025481565b6103196110f1565b5073ffffffffffffffffffffffffffffffffffffffff8116600090815260086020908152604091829020825160a08101845281548152600182015492810192909252600281015461ffff80821694840194909452620100009004909216606082015260039091015460808201525b919050565b60095473ffffffffffffffffffffffffffffffffffffffff1633146103cc5760405162461bcd60e51b81526004016103c39061176f565b60405180910390fd5b8273ffffffffffffffffffffffffffffffffffffffff168473ffffffffffffffffffffffffffffffffffffffff1614801561040957506001544310155b801561041757506002544311155b801561042557506004548110155b801561043357506005548111155b1561047f5773ffffffffffffffffffffffffffffffffffffffff831660009081526008602052604090206001015461047f5760065460035461047f9185916000919061ffff168261048b565b50505050565b60015481565b6104936109e5565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614806104e3575060095473ffffffffffffffffffffffffffffffffffffffff1633145b6104ff5760405162461bcd60e51b81526004016103c3906113f5565b610e428161ffff1611156105255760405162461bcd60e51b81526004016103c390611829565b60008261ffff16116105495760405162461bcd60e51b81526004016103c3906116dd565b6123a58261ffff16111561056f5760405162461bcd60e51b81526004016103c390611398565b8061ffff168261ffff1610156105975760405162461bcd60e51b81526004016103c39061150c565b73ffffffffffffffffffffffffffffffffffffffff8516600090815260086020526040902060010154156105dd5760405162461bcd60e51b81526004016103c39061133b565b60006105ed8461ffff85166110bd565b90506000811161060f5760405162461bcd60e51b81526004016103c3906117cc565b6000851561061d578561061f565b425b905060006040518060a001604052808381526020018781526020018661ffff1681526020018561ffff1681526020016000815250905080600860008a73ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082015181600001556020820151816001015560408201518160020160006101000a81548161ffff021916908361ffff16021790555060608201518160020160026101000a81548161ffff021916908361ffff16021790555060808201518160030155905050858873ffffffffffffffffffffffffffffffffffffffff167f289b4a3bfb88b0c05450910f26d440c9e13127d17a232782f02184d45606bd53848888604051610747939291906118e2565b60405180910390a35050505050505050565b73ffffffffffffffffffffffffffffffffffffffff81166000908152600860205260408120600281015460018201546107959161ffff166110bd565b9392505050565b60045481565b6107aa6110c9565b73ffffffffffffffffffffffffffffffffffffffff166107c86109e5565b73ffffffffffffffffffffffffffffffffffffffff16146107fb5760405162461bcd60e51b81526004016103c39061173a565b6000805460405173ffffffffffffffffffffffffffffffffffffffff909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000169055565b6108726110c9565b73ffffffffffffffffffffffffffffffffffffffff166108906109e5565b73ffffffffffffffffffffffffffffffffffffffff16146108c35760405162461bcd60e51b81526004016103c39061173a565b6040517f70a08231000000000000000000000000000000000000000000000000000000008152819073ffffffffffffffffffffffffffffffffffffffff82169063a9059cbb90339083906370a0823190610921903090600401611297565b60206040518083038186803b15801561093957600080fd5b505afa15801561094d573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610971919061122f565b6040518363ffffffff1660e01b815260040161098e9291906112b8565b602060405180830381600087803b1580156109a857600080fd5b505af11580156109bc573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109e0919061120f565b505050565b60005473ffffffffffffffffffffffffffffffffffffffff1690565b73ffffffffffffffffffffffffffffffffffffffff811660009081526008602052604081208054421015610a39576000915050610387565b8054600090610a499042906110cd565b90506000610a5a82620151806110bd565b600284015490915062010000900461ffff16811015610a7f5760009350505050610387565b600283015461ffff168110610a9b575050600101549050610387565b6002830154600090610ab49061ffff16620151806110d9565b90506000610acf8286600101546110bd90919063ffffffff16565b90506000610add82866110d9565b965061038795505050505050565b73ffffffffffffffffffffffffffffffffffffffff1660009081526008602052604090206003015490565b6000610b2182610f9b565b905060008111610b435760405162461bcd60e51b81526004016103c390611569565b73ffffffffffffffffffffffffffffffffffffffff821660009081526008602052604090206003810154610b7790836110e5565b60038201556007546040517fa9059cbb00000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff9091169063a9059cbb90610bd490869086906004016112b8565b602060405180830381600087803b158015610bee57600080fd5b505af1158015610c02573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610c26919061120f565b610c425760405162461bcd60e51b81526004016103c3906115c6565b604051829073ffffffffffffffffffffffffffffffffffffffff8516907fc6cbb4aa8681b18644bf64921eea8f2b9f44cbd58d64fc07a110bfccc203829690600090a3505050565b60086020526000908152604090208054600182015460028301546003909301549192909161ffff80831692620100009004169085565b60035461ffff1681565b60055481565b610cd86110c9565b73ffffffffffffffffffffffffffffffffffffffff16610cf66109e5565b73ffffffffffffffffffffffffffffffffffffffff1614610d295760405162461bcd60e51b81526004016103c39061173a565b73ffffffffffffffffffffffffffffffffffffffff8116610d5c5760405162461bcd60e51b81526004016103c390611452565b6000805460405173ffffffffffffffffffffffffffffffffffffffff808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff92909216919091179055565b60065481565b60075473ffffffffffffffffffffffffffffffffffffffff1681565b610e136110c9565b73ffffffffffffffffffffffffffffffffffffffff16610e316109e5565b73ffffffffffffffffffffffffffffffffffffffff1614610e645760405162461bcd60e51b81526004016103c39061173a565b85851015610e845760405162461bcd60e51b81526004016103c390611680565b83831015610ea45760405162461bcd60e51b81526004016103c3906112de565b60008261ffff1611610ec85760405162461bcd60e51b81526004016103c3906114af565b6123a58261ffff161115610eee5760405162461bcd60e51b81526004016103c390611623565b6001869055600285905560048490556005839055600380547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00001661ffff841617905560068190556040517fa730c411f92480f5f3749019582193fbd48a9c52390039dc3072e17bda739cdc90610f6f90889088908890889088908890611923565b60405180910390a1505050505050565b60095473ffffffffffffffffffffffffffffffffffffffff1681565b73ffffffffffffffffffffffffffffffffffffffff811660009081526008602052604081208054421015610fd3576000915050610387565b8054600090610fe39042906110cd565b90506000610ff482620151806110bd565b600284015490915062010000900461ffff168110156110195760009350505050610387565b600283015461ffff168110611051576000611045846003015485600101546110cd90919063ffffffff16565b94506103879350505050565b600283015460009061106a9061ffff16620151806110d9565b905060006110858286600101546110bd90919063ffffffff16565b9050600061109382866110d9565b905060006110ae8760030154836110cd90919063ffffffff16565b97506103879650505050505050565b60006107958284611967565b3390565b600061079582846119dd565b600061079582846119a0565b6000610795828461194f565b6040518060a001604052806000815260200160008152602001600061ffff168152602001600061ffff168152602001600081525090565b803573ffffffffffffffffffffffffffffffffffffffff8116811461038757600080fd5b803561ffff8116811461038757600080fd5b60006020828403121561116f578081fd5b61079582611128565b6000806000806080858703121561118d578283fd5b61119685611128565b93506111a460208601611128565b93969395505050506040820135916060013590565b600080600080600060a086880312156111d0578081fd5b6111d986611128565b945060208601359350604086013592506111f56060870161114c565b91506112036080870161114c565b90509295509295909350565b600060208284031215611220578081fd5b81518015158114610795578182fd5b600060208284031215611240578081fd5b5051919050565b60008060008060008060c0878903121561125f578081fd5b863595506020870135945060408701359350606087013592506112846080880161114c565b915060a087013590509295509295509295565b73ffffffffffffffffffffffffffffffffffffffff91909116815260200190565b73ffffffffffffffffffffffffffffffffffffffff929092168252602082015260400190565b6020808252603c908201527f52657761726456657374696e673a20656c696769626c65456e64426c6f636b2060408201527f6c657373207468616e20656c696769626c655374617274426c6f636b00000000606082015260800190565b6020808252603e908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20677260408201527f616e7420616c72656164792065786973747320666f72206163636f756e740000606082015260800190565b60208082526039908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20647560408201527f726174696f6e206d6f7265207468616e20323520796561727300000000000000606082015260800190565b60208082526031908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a206e6f60408201527f74206f776e6572206f722063616c6c6572000000000000000000000000000000606082015260800190565b60208082526026908201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160408201527f6464726573730000000000000000000000000000000000000000000000000000606082015260800190565b60208082526023908201527f52657761726456657374696e673a206475726174696f6e206d7573742062652060408201527f3e20300000000000000000000000000000000000000000000000000000000000606082015260800190565b6020808252602e908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20647560408201527f726174696f6e203c20636c696666000000000000000000000000000000000000606082015260800190565b6020808252602d908201527f52657761726456657374696e673a3a636c61696d5665737465643a20616d6f7560408201527f6e74566573746564206973203000000000000000000000000000000000000000606082015260800190565b6020808252602b908201527f52657761726456657374696e673a3a636c61696d5665737465643a207472616e60408201527f73666572206661696c6564000000000000000000000000000000000000000000606082015260800190565b6020808252602a908201527f52657761726456657374696e673a206475726174696f6e206d6f72652074686160408201527f6e20323520796561727300000000000000000000000000000000000000000000606082015260800190565b6020808252602c908201527f52657761726456657374696e673a207374617274426c6f636b206c657373207460408201527f68616e20656e64426c6f636b0000000000000000000000000000000000000000606082015260800190565b60208082526032908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20647560408201527f726174696f6e206d757374206265203e20300000000000000000000000000000606082015260800190565b6020808252818101527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604082015260600190565b60208082526021908201527f52657761726456657374696e673a3a6f6e4d696e743a206e6f742063616c6c6560408201527f7200000000000000000000000000000000000000000000000000000000000000606082015260800190565b60208082526034908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20616d60408201527f6f756e74566573746564506572446179203e2030000000000000000000000000606082015260800190565b60208082526036908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20636c60408201527f696666206d6f7265207468616e20313020796561727300000000000000000000606082015260800190565b600060a0820190508251825260208301516020830152604083015161ffff808216604085015280606086015116606085015250506080830151608083015292915050565b61ffff91909116815260200190565b90815260200190565b92835261ffff918216602084015216604082015260600190565b948552602085019390935261ffff9182166040850152166060830152608082015260a00190565b95865260208601949094526040850192909252606084015261ffff16608083015260a082015260c00190565b60008219821115611962576119626119f4565b500190565b60008261199b577f4e487b710000000000000000000000000000000000000000000000000000000081526012600452602481fd5b500490565b6000817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff04831182151516156119d8576119d86119f4565b500290565b6000828210156119ef576119ef6119f4565b500390565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fdfea264697066735822122005acad449457c8b980fc32de2ae474d4ae7ab542c72d885b0cd18c990d9b74ba64736f6c6343000801003352657761726456657374696e673a3a636f6e7374727563746f723a206d757374",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101825760003560e01c80639886c2a5116100d8578063f2fde38b1161008c578063fb0ec86c11610066578063fb0ec86c146102dd578063fc9c8d39146102f0578063fd75b8d4146102f857610182565b8063f2fde38b146102ba578063f7b2a7be146102cd578063f7c618c1146102d557610182565b8063b81a4d8f116100bd578063b81a4d8f14610279578063de05de981461029d578063ee0ea6ba146102b257610182565b80639886c2a51461025357806398f3b12d1461026657610182565b80636087349c1161013a578063839006f211610114578063839006f2146102185780638da5cb5b1461022b5780639114557e1461024057610182565b80636087349c146101f557806368fe092f14610208578063715018a61461021057610182565b80633f812ccc1161016b5780633f812ccc146101c55780634a372ad9146101da5780635ca2fc53146101e257610182565b80630c933acc14610187578063376d3b8f146101a5575b600080fd5b61018f61030b565b60405161019c91906118d9565b60405180910390f35b6101b86101b336600461115e565b610311565b60405161019c9190611886565b6101d86101d3366004611178565b61038c565b005b61018f610485565b6101d86101f03660046111b9565b61048b565b61018f61020336600461115e565b610759565b61018f61079c565b6101d86107a2565b6101d861022636600461115e565b61086a565b6102336109e5565b60405161019c9190611297565b61018f61024e36600461115e565b610a01565b61018f61026136600461115e565b610aeb565b6101d861027436600461115e565b610b16565b61028c61028736600461115e565b610c8a565b60405161019c9594939291906118fc565b6102a5610cc0565b60405161019c91906118ca565b61018f610cca565b6101d86102c836600461115e565b610cd0565b61018f610de9565b610233610def565b6101d86102eb366004611247565b610e0b565b610233610f7f565b61018f61030636600461115e565b610f9b565b60025481565b6103196110f1565b5073ffffffffffffffffffffffffffffffffffffffff8116600090815260086020908152604091829020825160a08101845281548152600182015492810192909252600281015461ffff80821694840194909452620100009004909216606082015260039091015460808201525b919050565b60095473ffffffffffffffffffffffffffffffffffffffff1633146103cc5760405162461bcd60e51b81526004016103c39061176f565b60405180910390fd5b8273ffffffffffffffffffffffffffffffffffffffff168473ffffffffffffffffffffffffffffffffffffffff1614801561040957506001544310155b801561041757506002544311155b801561042557506004548110155b801561043357506005548111155b1561047f5773ffffffffffffffffffffffffffffffffffffffff831660009081526008602052604090206001015461047f5760065460035461047f9185916000919061ffff168261048b565b50505050565b60015481565b6104936109e5565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614806104e3575060095473ffffffffffffffffffffffffffffffffffffffff1633145b6104ff5760405162461bcd60e51b81526004016103c3906113f5565b610e428161ffff1611156105255760405162461bcd60e51b81526004016103c390611829565b60008261ffff16116105495760405162461bcd60e51b81526004016103c3906116dd565b6123a58261ffff16111561056f5760405162461bcd60e51b81526004016103c390611398565b8061ffff168261ffff1610156105975760405162461bcd60e51b81526004016103c39061150c565b73ffffffffffffffffffffffffffffffffffffffff8516600090815260086020526040902060010154156105dd5760405162461bcd60e51b81526004016103c39061133b565b60006105ed8461ffff85166110bd565b90506000811161060f5760405162461bcd60e51b81526004016103c3906117cc565b6000851561061d578561061f565b425b905060006040518060a001604052808381526020018781526020018661ffff1681526020018561ffff1681526020016000815250905080600860008a73ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082015181600001556020820151816001015560408201518160020160006101000a81548161ffff021916908361ffff16021790555060608201518160020160026101000a81548161ffff021916908361ffff16021790555060808201518160030155905050858873ffffffffffffffffffffffffffffffffffffffff167f289b4a3bfb88b0c05450910f26d440c9e13127d17a232782f02184d45606bd53848888604051610747939291906118e2565b60405180910390a35050505050505050565b73ffffffffffffffffffffffffffffffffffffffff81166000908152600860205260408120600281015460018201546107959161ffff166110bd565b9392505050565b60045481565b6107aa6110c9565b73ffffffffffffffffffffffffffffffffffffffff166107c86109e5565b73ffffffffffffffffffffffffffffffffffffffff16146107fb5760405162461bcd60e51b81526004016103c39061173a565b6000805460405173ffffffffffffffffffffffffffffffffffffffff909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000169055565b6108726110c9565b73ffffffffffffffffffffffffffffffffffffffff166108906109e5565b73ffffffffffffffffffffffffffffffffffffffff16146108c35760405162461bcd60e51b81526004016103c39061173a565b6040517f70a08231000000000000000000000000000000000000000000000000000000008152819073ffffffffffffffffffffffffffffffffffffffff82169063a9059cbb90339083906370a0823190610921903090600401611297565b60206040518083038186803b15801561093957600080fd5b505afa15801561094d573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610971919061122f565b6040518363ffffffff1660e01b815260040161098e9291906112b8565b602060405180830381600087803b1580156109a857600080fd5b505af11580156109bc573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109e0919061120f565b505050565b60005473ffffffffffffffffffffffffffffffffffffffff1690565b73ffffffffffffffffffffffffffffffffffffffff811660009081526008602052604081208054421015610a39576000915050610387565b8054600090610a499042906110cd565b90506000610a5a82620151806110bd565b600284015490915062010000900461ffff16811015610a7f5760009350505050610387565b600283015461ffff168110610a9b575050600101549050610387565b6002830154600090610ab49061ffff16620151806110d9565b90506000610acf8286600101546110bd90919063ffffffff16565b90506000610add82866110d9565b965061038795505050505050565b73ffffffffffffffffffffffffffffffffffffffff1660009081526008602052604090206003015490565b6000610b2182610f9b565b905060008111610b435760405162461bcd60e51b81526004016103c390611569565b73ffffffffffffffffffffffffffffffffffffffff821660009081526008602052604090206003810154610b7790836110e5565b60038201556007546040517fa9059cbb00000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff9091169063a9059cbb90610bd490869086906004016112b8565b602060405180830381600087803b158015610bee57600080fd5b505af1158015610c02573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610c26919061120f565b610c425760405162461bcd60e51b81526004016103c3906115c6565b604051829073ffffffffffffffffffffffffffffffffffffffff8516907fc6cbb4aa8681b18644bf64921eea8f2b9f44cbd58d64fc07a110bfccc203829690600090a3505050565b60086020526000908152604090208054600182015460028301546003909301549192909161ffff80831692620100009004169085565b60035461ffff1681565b60055481565b610cd86110c9565b73ffffffffffffffffffffffffffffffffffffffff16610cf66109e5565b73ffffffffffffffffffffffffffffffffffffffff1614610d295760405162461bcd60e51b81526004016103c39061173a565b73ffffffffffffffffffffffffffffffffffffffff8116610d5c5760405162461bcd60e51b81526004016103c390611452565b6000805460405173ffffffffffffffffffffffffffffffffffffffff808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff92909216919091179055565b60065481565b60075473ffffffffffffffffffffffffffffffffffffffff1681565b610e136110c9565b73ffffffffffffffffffffffffffffffffffffffff16610e316109e5565b73ffffffffffffffffffffffffffffffffffffffff1614610e645760405162461bcd60e51b81526004016103c39061173a565b85851015610e845760405162461bcd60e51b81526004016103c390611680565b83831015610ea45760405162461bcd60e51b81526004016103c3906112de565b60008261ffff1611610ec85760405162461bcd60e51b81526004016103c3906114af565b6123a58261ffff161115610eee5760405162461bcd60e51b81526004016103c390611623565b6001869055600285905560048490556005839055600380547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00001661ffff841617905560068190556040517fa730c411f92480f5f3749019582193fbd48a9c52390039dc3072e17bda739cdc90610f6f90889088908890889088908890611923565b60405180910390a1505050505050565b60095473ffffffffffffffffffffffffffffffffffffffff1681565b73ffffffffffffffffffffffffffffffffffffffff811660009081526008602052604081208054421015610fd3576000915050610387565b8054600090610fe39042906110cd565b90506000610ff482620151806110bd565b600284015490915062010000900461ffff168110156110195760009350505050610387565b600283015461ffff168110611051576000611045846003015485600101546110cd90919063ffffffff16565b94506103879350505050565b600283015460009061106a9061ffff16620151806110d9565b905060006110858286600101546110bd90919063ffffffff16565b9050600061109382866110d9565b905060006110ae8760030154836110cd90919063ffffffff16565b97506103879650505050505050565b60006107958284611967565b3390565b600061079582846119dd565b600061079582846119a0565b6000610795828461194f565b6040518060a001604052806000815260200160008152602001600061ffff168152602001600061ffff168152602001600081525090565b803573ffffffffffffffffffffffffffffffffffffffff8116811461038757600080fd5b803561ffff8116811461038757600080fd5b60006020828403121561116f578081fd5b61079582611128565b6000806000806080858703121561118d578283fd5b61119685611128565b93506111a460208601611128565b93969395505050506040820135916060013590565b600080600080600060a086880312156111d0578081fd5b6111d986611128565b945060208601359350604086013592506111f56060870161114c565b91506112036080870161114c565b90509295509295909350565b600060208284031215611220578081fd5b81518015158114610795578182fd5b600060208284031215611240578081fd5b5051919050565b60008060008060008060c0878903121561125f578081fd5b863595506020870135945060408701359350606087013592506112846080880161114c565b915060a087013590509295509295509295565b73ffffffffffffffffffffffffffffffffffffffff91909116815260200190565b73ffffffffffffffffffffffffffffffffffffffff929092168252602082015260400190565b6020808252603c908201527f52657761726456657374696e673a20656c696769626c65456e64426c6f636b2060408201527f6c657373207468616e20656c696769626c655374617274426c6f636b00000000606082015260800190565b6020808252603e908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20677260408201527f616e7420616c72656164792065786973747320666f72206163636f756e740000606082015260800190565b60208082526039908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20647560408201527f726174696f6e206d6f7265207468616e20323520796561727300000000000000606082015260800190565b60208082526031908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a206e6f60408201527f74206f776e6572206f722063616c6c6572000000000000000000000000000000606082015260800190565b60208082526026908201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160408201527f6464726573730000000000000000000000000000000000000000000000000000606082015260800190565b60208082526023908201527f52657761726456657374696e673a206475726174696f6e206d7573742062652060408201527f3e20300000000000000000000000000000000000000000000000000000000000606082015260800190565b6020808252602e908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20647560408201527f726174696f6e203c20636c696666000000000000000000000000000000000000606082015260800190565b6020808252602d908201527f52657761726456657374696e673a3a636c61696d5665737465643a20616d6f7560408201527f6e74566573746564206973203000000000000000000000000000000000000000606082015260800190565b6020808252602b908201527f52657761726456657374696e673a3a636c61696d5665737465643a207472616e60408201527f73666572206661696c6564000000000000000000000000000000000000000000606082015260800190565b6020808252602a908201527f52657761726456657374696e673a206475726174696f6e206d6f72652074686160408201527f6e20323520796561727300000000000000000000000000000000000000000000606082015260800190565b6020808252602c908201527f52657761726456657374696e673a207374617274426c6f636b206c657373207460408201527f68616e20656e64426c6f636b0000000000000000000000000000000000000000606082015260800190565b60208082526032908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20647560408201527f726174696f6e206d757374206265203e20300000000000000000000000000000606082015260800190565b6020808252818101527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604082015260600190565b60208082526021908201527f52657761726456657374696e673a3a6f6e4d696e743a206e6f742063616c6c6560408201527f7200000000000000000000000000000000000000000000000000000000000000606082015260800190565b60208082526034908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20616d60408201527f6f756e74566573746564506572446179203e2030000000000000000000000000606082015260800190565b60208082526036908201527f52657761726456657374696e673a3a616464546f6b656e4772616e743a20636c60408201527f696666206d6f7265207468616e20313020796561727300000000000000000000606082015260800190565b600060a0820190508251825260208301516020830152604083015161ffff808216604085015280606086015116606085015250506080830151608083015292915050565b61ffff91909116815260200190565b90815260200190565b92835261ffff918216602084015216604082015260600190565b948552602085019390935261ffff9182166040850152166060830152608082015260a00190565b95865260208601949094526040850192909252606084015261ffff16608083015260a082015260c00190565b60008219821115611962576119626119f4565b500190565b60008261199b577f4e487b710000000000000000000000000000000000000000000000000000000081526012600452602481fd5b500490565b6000817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff04831182151516156119d8576119d86119f4565b500290565b6000828210156119ef576119ef6119f4565b500390565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fdfea264697066735822122005acad449457c8b980fc32de2ae474d4ae7ab542c72d885b0cd18c990d9b74ba64736f6c63430008010033",
+  "devdoc": {
+    "details": "The vesting contract for the initial mint rewards",
+    "kind": "dev",
+    "methods": {
+      "addTokenGrant(address,uint256,uint256,uint16,uint16)": {
+        "params": {
+          "amount": "The amount of tokens being granted",
+          "recipient": "The address that is receiving the grant",
+          "startTime": "The unix timestamp when the grant will start",
+          "vestingCliffInDays": "The vesting cliff duration in days",
+          "vestingDurationInDays": "The vesting period in days"
+        }
+      },
+      "calculateGrantClaim(address)": {
+        "details": "Due to rounding errors once grant duration is reached, returns the entire left grant amountReturns 0 if cliff has not been reached",
+        "params": {
+          "recipient": "The address that has a grant"
+        },
+        "returns": {
+          "_0": "The amount recipient can claim"
+        }
+      },
+      "claimVestedTokens(address)": {
+        "details": "Errors if no tokens have vestedIt is advised recipients check they are entitled to claim via `calculateGrantClaim` before calling this",
+        "params": {
+          "recipient": "The address that has a grant"
+        }
+      },
+      "claimedBalance(address)": {
+        "params": {
+          "recipient": "The address that has a grant"
+        },
+        "returns": {
+          "_0": "the number of claimed tokens by `recipient`"
+        }
+      },
+      "constructor": {
+        "params": {
+          "_caller": "Address of an additional allowed caller of addTokenGrant",
+          "_rewardToken": "Address of reward token"
+        }
+      },
+      "getTokenGrant(address)": {
+        "params": {
+          "recipient": "The address that has a grant"
+        },
+        "returns": {
+          "_0": "the grant"
+        }
+      },
+      "onMint(address,address,uint256,uint256)": {
+        "details": "Check if a reward has been earned and if so start vesting Requirements: - the caller must be {caller}"
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "rescue(address)": {
+        "details": "Rescue any ERC-20 token the contract may hold",
+        "params": {
+          "_token": "ERC-20 token address Requirements: - the caller must be owner"
+        }
+      },
+      "setRewardParameters(uint256,uint256,uint256,uint256,uint16,uint256)": {
+        "details": "Sets current reward parameters Requirements: - the caller must be owner"
+      },
+      "tokensVestedPerDay(address)": {
+        "params": {
+          "recipient": "The address that has a grant"
+        },
+        "returns": {
+          "_0": "Number of tokens that will vest per day"
+        }
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      },
+      "vestedBalance(address)": {
+        "details": "Returns 0 if cliff has not been reached",
+        "params": {
+          "recipient": "The address that has a grant"
+        },
+        "returns": {
+          "_0": "Total vested balance (claimed + unclaimed)"
+        }
+      }
+    },
+    "stateVariables": {
+      "SECONDS_PER_DAY": {
+        "details": "Used to translate vesting periods specified in days to seconds"
+      }
+    },
+    "title": "RewardVesting",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "GrantAdded(address,uint256,uint256,uint16,uint16)": {
+        "notice": "Event emitted when a new grant is created"
+      },
+      "GrantTokensClaimed(address,uint256)": {
+        "notice": "Event emitted when tokens are claimed by a recipient from a grant"
+      },
+      "RewardParametersChanged(uint256,uint256,uint256,uint256,uint16,uint256)": {
+        "notice": "Emitted when reward parameters ({rewardEarnStartBlock}, rewardEarnEndBlock}, {rewardEligibleStartBlock}, {rewardEligibleEndBlock}, {rewardVestingDuration}, {rewardAmount}) are changed"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "addTokenGrant(address,uint256,uint256,uint16,uint16)": {
+        "notice": "Add a new token grant"
+      },
+      "calculateGrantClaim(address)": {
+        "notice": "Calculate the vested and unclaimed tokens available for `recipient` to claim"
+      },
+      "caller()": {
+        "notice": "Caller address that is allowed to add grants (in addition to owner)"
+      },
+      "claimVestedTokens(address)": {
+        "notice": "Allows a grant recipient to claim their vested tokens"
+      },
+      "claimedBalance(address)": {
+        "notice": "The balance claimed by `recipient`"
+      },
+      "constructor": {
+        "notice": "Construct a new Vesting contract"
+      },
+      "getTokenGrant(address)": {
+        "notice": "Get token grant for recipient"
+      },
+      "rewardAmount()": {
+        "notice": "Total rewards per mint"
+      },
+      "rewardEarnEndBlock()": {
+        "notice": "End block of rewards"
+      },
+      "rewardEarnStartBlock()": {
+        "notice": "Start block of rewards"
+      },
+      "rewardEligibleEndBlock()": {
+        "notice": "End block of NFTs eligibile for rewards"
+      },
+      "rewardEligibleStartBlock()": {
+        "notice": "Start block of NFTs eligible for rewards"
+      },
+      "rewardToken()": {
+        "notice": "Address of reward token"
+      },
+      "rewardVestingDuration()": {
+        "notice": "Reward vesting duration in days"
+      },
+      "tokenGrants(address)": {
+        "notice": "Mapping of address to grants"
+      },
+      "tokensVestedPerDay(address)": {
+        "notice": "Calculate the number of tokens that will vest per day for the given recipient"
+      },
+      "vestedBalance(address)": {
+        "notice": "Calculate the vested (claimed + unclaimed) tokens for `recipient`"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 5453,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 4397,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "rewardEarnStartBlock",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4400,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "rewardEarnEndBlock",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4403,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "rewardVestingDuration",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint16"
+      },
+      {
+        "astId": 4406,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "rewardEligibleStartBlock",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4409,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "rewardEligibleEndBlock",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4412,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "rewardAmount",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4416,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "rewardToken",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_contract(IERC20)1804"
+      },
+      {
+        "astId": 4433,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "tokenGrants",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_address,t_struct(Grant)4427_storage)"
+      },
+      {
+        "astId": 4436,
+        "contract": "contracts/RewardVesting.sol:RewardVesting",
+        "label": "caller",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IERC20)1804": {
+        "encoding": "inplace",
+        "label": "contract IERC20",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_struct(Grant)4427_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct RewardVesting.Grant)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Grant)4427_storage"
+      },
+      "t_struct(Grant)4427_storage": {
+        "encoding": "inplace",
+        "label": "struct RewardVesting.Grant",
+        "members": [
+          {
+            "astId": 4418,
+            "contract": "contracts/RewardVesting.sol:RewardVesting",
+            "label": "startTime",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 4420,
+            "contract": "contracts/RewardVesting.sol:RewardVesting",
+            "label": "amount",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 4422,
+            "contract": "contracts/RewardVesting.sol:RewardVesting",
+            "label": "vestingDuration",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint16"
+          },
+          {
+            "astId": 4424,
+            "contract": "contracts/RewardVesting.sol:RewardVesting",
+            "label": "vestingCliff",
+            "offset": 2,
+            "slot": "2",
+            "type": "t_uint16"
+          },
+          {
+            "astId": 4426,
+            "contract": "contracts/RewardVesting.sol:RewardVesting",
+            "label": "totalClaimed",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_uint16": {
+        "encoding": "inplace",
+        "label": "uint16",
+        "numberOfBytes": "2"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
