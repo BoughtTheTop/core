@@ -87,8 +87,10 @@ task("set-base-token-uri", "set the baseTokenURI of the NFT Contract")
     .addParam("uri", "Base token URI")
     .setAction(async (args, hre) => {
         const account = (await hre.getNamedAccounts())['deployer'];
+        const network = await hre.ethers.provider.getNetwork();
+        const contractName = network.chainId === 1 ? "BoughtTheTopNFTRoot" : "BoughtTheTopNFTChild";
         const ethers = hre.ethers as any;
-        const contract = await ethers.getContract("BoughtTheTopNFT", account);
+        const contract = await ethers.getContract(contractName, account);
         const tx = await contract.setBaseTokenURI(args.uri);
         console.log(tx.hash);
     });
@@ -99,7 +101,7 @@ task("set-on-mint", "set the onMint of the NFT Contract")
     .setAction(async (args, hre) => {
         const account = (await hre.getNamedAccounts())['deployer'];
         const ethers = hre.ethers as any;
-        const contract = await ethers.getContract("BoughtTheTopNFT", account);
+        const contract = await ethers.getContract("BoughtTheTopNFTChild", account);
         const tx = await contract.setOnMint(args.address);
         console.log(tx.hash);
     });
