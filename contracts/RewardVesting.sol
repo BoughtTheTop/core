@@ -279,10 +279,10 @@ contract RewardVesting is Ownable, IOnMint {
      *
      * - the caller must be {caller}
      */
-    function onMint(address minter, address to, uint256, uint256 extra) public override {
+    function onMint(address, address to, uint256, uint256 extra) public override {
         require(msg.sender == caller, "RewardVesting::onMint: not caller");
         
-        if (minter == to && block.number >= rewardEarnStartBlock && block.number <= rewardEarnEndBlock &&
+        if (block.number >= rewardEarnStartBlock && block.number <= rewardEarnEndBlock &&
             extra >= rewardEligibleStartBlock && extra <= rewardEligibleEndBlock) {
             
             if (tokenGrants[to].amount == 0)

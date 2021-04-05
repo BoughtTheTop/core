@@ -9,7 +9,7 @@ BoughtTheTopNFTChild: [0x386d661252e4bebab2fD9683538905e4eB0cd0DE](https://explo
 
 BoughtTheTopTokenChild: [0x04AE4aE7F9af802DE5A2Da9561948F6f24D4b043](https://explorer-mainnet.maticvigil.com/address/0x04AE4aE7F9af802DE5A2Da9561948F6f24D4b043)
 
-RewardsManager: [0x5ABBC8A74F536d0Dba993466E70BA0a14659c3e9](https://explorer-mainnet.maticvigil.com/address/0x5ABBC8A74F536d0Dba993466E70BA0a14659c3e9)
+RewardsManager: [0x7574a85Ec062d26092A72441Dbc88269d1c70d90](https://explorer-mainnet.maticvigil.com/address/0x7574a85Ec062d26092A72441Dbc88269d1c70d90)
 
 Ethereum
 ========

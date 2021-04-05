@@ -280,7 +280,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "minter",
+        "name": "",
         "type": "address"
       },
       {

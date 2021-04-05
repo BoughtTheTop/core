@@ -14,7 +14,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     if (network.chainId != 1) {
         const reward = await get("RewardVesting");
         const onMint = await read('BoughtTheTopNFTChild', {}, 'onMint');
-        if (onMint == 0)
+        if (onMint !== reward.address)
             await execute('BoughtTheTopNFTChild', { from: deployer, log: true }, 'setOnMint', reward.address);
         else
             log(`- onMint already set: ${onMint}`);
