@@ -8,7 +8,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     const { deployer } = await getNamedAccounts();
 
     const network = await hre.ethers.provider.getNetwork();
-
+/*
     log("5) Set onMint to reward contract");
 
     if (network.chainId != 1) {
@@ -21,6 +21,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     }
     else
         log(`- Skipped on this chain`);
+*/
 };
 
 export default func;
