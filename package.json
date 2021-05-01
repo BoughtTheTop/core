@@ -2,7 +2,7 @@
   "name": "@boughtthe.top/core",
   "version": "1.0.0",
   "description": "Core contracts for boughtthe.top",
-  "author": "top-buyter <dev@boughtthe.top>",
+  "author": "top-buyer <dev@boughtthe.top>",
   "license": "MIT",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.1",
